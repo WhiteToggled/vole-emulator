@@ -27,4 +27,4 @@ private:
     uint16_t instruction_register;
 };
 
-#endif
+#endif // !VOLEMACHINE_H
