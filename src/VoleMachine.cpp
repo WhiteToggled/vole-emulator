@@ -59,40 +59,40 @@ void VoleMachine::decode_execute() {
 
     switch (opcode) {
         case 0x1:
-            LOAD(*this, reg, valueXY);
+            InstructionSet::LOAD(*this, reg, valueXY);
             break;
         case 0x2:
-            LOAD_VAL(*this, reg, valueXY);
+            InstructionSet::LOAD_VAL(*this, reg, valueXY);
             break;
         case 0x3:
-            STORE(*this, reg, valueXY);
+            InstructionSet::STORE(*this, reg, valueXY);
             break;
         case 0x4:
-            MOVE(*this, regS, regD);
+            InstructionSet::MOVE(*this, regS, regD);
             break;
         case 0x5:
-            ADD(*this, reg, regS, regD);
+            InstructionSet::ADD(*this, reg, regS, regD);
             break;
         case 0x6:
-            ADD_FLOAT(*this, reg, regS, regD);
+            InstructionSet::ADD_FLOAT(*this, reg, regS, regD);
             break;
         case 0x7:
-            OR(*this, reg, regS, regD);
+            InstructionSet::OR(*this, reg, regS, regD);
             break;
         case 0x8:
-            AND(*this, reg, regS, regD);
+            InstructionSet::AND(*this, reg, regS, regD);
             break;
         case 0x9:
-            XOR(*this, reg, regS, regD);
+            InstructionSet::XOR(*this, reg, regS, regD);
             break;
         case 0xA:
-            ROTATE(*this, reg, valueXY);
+            InstructionSet::ROTATE(*this, reg, valueXY);
             break;
         case 0xB:
-            JUMP(*this, reg, valueXY);
+            InstructionSet::JUMP(*this, reg, valueXY);
             break;
         case 0xC:
-            HALT(*this);
+            InstructionSet::HALT(*this);
             break;
         default: 
             // idk Error

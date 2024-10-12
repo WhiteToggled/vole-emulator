@@ -20,6 +20,7 @@ public:
     void fetch();
     void decode_execute();
 
+    friend class InstructionSet;
 private:
     uint8_t memory[MEMORY_SIZE];
     uint8_t registers[NUM_REGISTERS];
