@@ -36,3 +36,15 @@ void VoleMachine::write_register(uint8_t reg, uint8_t value) {
         registers[reg] = value;
     }
 }
+
+void VoleMachine::fetch(uint8_t address) {
+
+    uint8_t high_byte = read_memory(program_counter);
+    uint8_t low_byte = read_memory(program_counter + 1);
+
+    // Concatenate the two
+    uint16_t instruction = (high_byte << 8) | low_byte;
+
+    instruction_register = instruction;
+    program_counter += 2;
+}
