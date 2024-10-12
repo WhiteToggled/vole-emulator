@@ -23,3 +23,16 @@ uint8_t VoleMachine::read_memory(uint8_t address) {
 void VoleMachine::write_memory(uint8_t address, uint8_t value) {
     memory[address] = value;
 }
+
+uint8_t VoleMachine::read_register(uint8_t reg) {
+    if (reg < NUM_REGISTERS) {
+        return registers[reg];
+    }
+    return 0;
+}
+
+void VoleMachine::write_register(uint8_t reg, uint8_t value) {
+    if (reg < NUM_REGISTERS) {
+        registers[reg] = value;
+    }
+}
