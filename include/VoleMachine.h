@@ -19,8 +19,8 @@ public:
 
     void fetch();
     void decode_execute();
+    void set_program_counter(uint8_t address);
 
-    friend class InstructionSet;
 private:
     uint8_t memory[MEMORY_SIZE];
     uint8_t registers[NUM_REGISTERS];

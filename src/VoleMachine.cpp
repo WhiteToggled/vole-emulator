@@ -49,6 +49,10 @@ void VoleMachine::fetch() {
     program_counter += 2;
 }
 
+void VoleMachine::set_program_counter(uint8_t address) {
+    program_counter = address;
+}
+
 void VoleMachine::decode_execute() {
 
     uint8_t opcode = instruction_register >> 12;      // _ X X X 

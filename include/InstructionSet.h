@@ -6,8 +6,6 @@ class VoleMachine;
 
 class InstructionSet {
 public:
-    friend class VoleMachine;
-private:
     static void LOAD(VoleMachine &machine, uint8_t reg, uint8_t address);
     static void LOAD_VAL(VoleMachine &machine, uint8_t reg, uint8_t value);
     static void STORE(VoleMachine &machine, uint8_t reg, uint8_t address);
