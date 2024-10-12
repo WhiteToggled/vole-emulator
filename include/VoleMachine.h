@@ -7,7 +7,7 @@
 class VoleMachine {
 public:
     static const int MEMORY_SIZE = 256;
-    static const int NUM_REGISTERS = 256;
+    static const int NUM_REGISTERS = 16;
 
     VoleMachine();
 
