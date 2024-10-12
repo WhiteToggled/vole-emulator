@@ -18,7 +18,7 @@ public:
     void write_register(uint8_t reg, uint8_t value);
 
     void fetch(uint8_t address);
-    void decodeExecute();
+    void decode_execute();
 
 private:
     uint8_t memory[MEMORY_SIZE];
