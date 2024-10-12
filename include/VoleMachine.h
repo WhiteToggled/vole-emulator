@@ -17,7 +17,7 @@ public:
     uint8_t read_register(uint8_t reg);
     void write_register(uint8_t reg, uint8_t value);
 
-    void fetch(uint8_t address);
+    void fetch();
     void decode_execute();
 
 private:
