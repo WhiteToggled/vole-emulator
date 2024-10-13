@@ -16,7 +16,7 @@ VoleMachine::VoleMachine() {
     instruction_register = 0;
 }
 
-uint8_t VoleMachine::read_memory(uint8_t address) {
+uint8_t VoleMachine::read_memory(uint8_t address) const {
     return memory[address];
 }
 
@@ -24,7 +24,7 @@ void VoleMachine::write_memory(uint8_t address, uint8_t value) {
     memory[address] = value;
 }
 
-uint8_t VoleMachine::read_register(uint8_t reg) {
+uint8_t VoleMachine::read_register(uint8_t reg) const {
     if (reg < NUM_REGISTERS) {
         return registers[reg];
     }
