@@ -37,6 +37,14 @@ void VoleMachine::write_register(uint8_t reg, uint8_t value) {
     }
 }
 
+void VoleMachine::set_program_counter(uint8_t address) {
+    program_counter = address;
+}
+
+uint8_t VoleMachine::get_program_counter() const {
+    return program_counter;
+}
+
 void VoleMachine::fetch() {
 
     uint8_t high_byte = read_memory(program_counter);
@@ -49,9 +57,6 @@ void VoleMachine::fetch() {
     program_counter += 2;
 }
 
-void VoleMachine::set_program_counter(uint8_t address) {
-    program_counter = address;
-}
 
 void VoleMachine::decode_execute() {
 
