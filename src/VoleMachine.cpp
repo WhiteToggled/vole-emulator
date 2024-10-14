@@ -1,4 +1,6 @@
 #include "../include/InstructionSet.h"
+#include <iomanip>
+#include <iostream>
 #include "../include/VoleMachine.h"
 
 VoleMachine::VoleMachine() { 
@@ -39,10 +41,6 @@ void VoleMachine::write_register(uint8_t reg, uint8_t value) {
 
 void VoleMachine::set_program_counter(uint8_t address) {
     program_counter = address;
-}
-
-uint8_t VoleMachine::get_program_counter() const {
-    return program_counter;
 }
 
 void VoleMachine::fetch() {
@@ -109,3 +107,61 @@ void VoleMachine::decode_execute() {
     }
 }
 
+void VoleMachine::start_machine() {
+    while(!is_halted) {
+        fetch();
+        decode_execute();
+    }
+}
+
+
+void VoleMachine::halt_machine() {
+    is_halted = true;
+}
+
+
+// Debugging
+void VoleMachine::get_program_counter() const {
+    std::cout << "Program Counter: " << int(program_counter) << std::endl;
+}
+
+void VoleMachine::get_instruction_register() const {
+    std::cout << "Instruction Register: " << int(instruction_register) << std::endl;
+}
+
+void VoleMachine::get_memory() const {
+    const int cells_per_row = 8;
+
+    std::cout << "--------------" << std::endl;
+    std::cout << "    Memory    " << std::endl;
+    std::cout << "--------------" << std::endl;
+    for (int i = 0; i < MEMORY_SIZE; i++) {
+        if(i % cells_per_row == 0)
+            std::cout << std::endl;
+        std::cout << "[Address " << std::setw(2) << std::setfill('0') << i 
+              << " : 0x" << std::setw(2) << std::setfill('0') << std::hex << int(memory[i]) << "]  ";
+    }
+    std::cout << std::endl;
+}
+
+void VoleMachine::get_registers() const {
+    const int cells_per_row = 8;
+
+    std::cout << "--------------" << std::endl;
+    std::cout << "  Registers   " << std::endl;
+    std::cout << "--------------" << std::endl;
+    for (int i = 0; i < NUM_REGISTERS; i++) {
+        if(i % cells_per_row == 0)
+            std::cout << std::endl;
+        std::cout << "[Address " << std::setw(2) << std::setfill('0') << i 
+              << " : 0x" << std::setw(2) << std::setfill('0') << std::hex << int(registers[i]) << "]  ";
+    }
+    std::cout << std::endl;
+}
+
+void VoleMachine::get_current_state() const{
+    get_program_counter();
+    get_instruction_register();
+    get_memory();
+    get_registers();
+}
