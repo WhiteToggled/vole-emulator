@@ -10,42 +10,42 @@ VoleMachine machine;
 
 void input_memory() {
 
-    string hex_str;
-    unsigned hex_value;
-    int i = 0;
-    do {
+    string hex_addr_str, hex_value_str;
+    unsigned hex_addr_int, hex_value_int;
 
-        cout << "Please enter the address for memory cell " << i << ": (or q to quit) " << endl;
-        cin >> hex_str;
+    cout << "Enter the memory address and corresponding value separated by a whitespace. " << endl;
+    cout << "Press (n N) to continue to execution. \n\n";
 
-        if (hex_str == "q" || hex_str == "Q") 
+    while (true) {
+
+        cin >> hex_addr_str;
+        if (hex_addr_str == "n" || hex_value_str == "N")
             return;
+        cin >> hex_value_str;
 
         stringstream ss;
+        ss << hex << hex_addr_str;
+        ss >> hex_addr_int;
+        ss.clear();
+        ss << hex << hex_value_str;
+        ss >> hex_value_int;
 
-        ss << hex << hex_str;
-        ss >> hex_value;
-
-        machine.write_memory(i, static_cast<uint8_t>(hex_value));
-
-
-        i++;
-    } while (i < 256);
-
+        machine.write_memory(static_cast<uint8_t>(hex_addr_int), static_cast<uint8_t>(hex_value_int));
+    }
 }
 
 int main(int argc, char* argv[]) {
 
 
     input_memory();
-    cout << "------------------" << endl;
-    cout << "     Initial      " << endl;
-    cout << "------------------" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "         INITIAL             " << endl;
+    cout << "-----------------------------" << endl;
     machine.get_current_state();
     machine.start_machine();
-    cout << "------------------" << endl;
-    cout << "       Final      " << endl;
-    cout << "------------------" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "            FINAL            " << endl;
+    cout << "-----------------------------" << endl;
     machine.get_current_state();
 
     return 0;
