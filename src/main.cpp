@@ -19,7 +19,7 @@ void input_memory() {
     while (true) {
 
         cin >> hex_addr_str;
-        if (hex_addr_str == "n" || hex_value_str == "N")
+        if (hex_addr_str == "n" || hex_addr_str == "N")
             return;
         cin >> hex_value_str;
 
