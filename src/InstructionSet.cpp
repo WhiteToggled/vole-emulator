@@ -65,9 +65,9 @@ void InstructionSet::ROTATE(VoleMachine &machine, uint8_t reg, uint8_t numBits) 
 }
 
 void InstructionSet::JUMP(VoleMachine &machine, uint8_t reg, uint8_t address) {
-    uint8_t reg0 = machine.read_memory(0); 
+    uint8_t reg0 = machine.read_register(0); 
 
-    if (machine.read_memory(reg) == reg0) {
+    if (machine.read_register(reg) == reg0) {
         machine.set_program_counter(address);
     }
 }
