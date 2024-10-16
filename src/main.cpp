@@ -36,12 +36,16 @@ void input_memory() {
 
 int main(int argc, char* argv[]) {
 
+    // TODO UI 
+    // 1. Highlight used addresses and registers.
+    // 2. Make a way to go through each machine cycle by pressing -> and <-
+    // 3. Make a UI in curses
 
     input_memory();
-    cout << "-----------------------------" << endl;
-    cout << "         INITIAL             " << endl;
-    cout << "-----------------------------" << endl;
-    machine.get_current_state();
+    /* cout << "-----------------------------" << endl; */
+    /* cout << "         INITIAL             " << endl; */
+    /* cout << "-----------------------------" << endl; */
+    /* machine.get_current_state(); */
     machine.start_machine();
     cout << "-----------------------------" << endl;
     cout << "            FINAL            " << endl;

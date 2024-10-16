@@ -16,6 +16,7 @@ VoleMachine::VoleMachine() {
 
     program_counter = 0;
     instruction_register = 0;
+    is_halted = false;
 }
 
 uint8_t VoleMachine::read_memory(uint8_t address) const {
@@ -122,11 +123,11 @@ void VoleMachine::halt_machine() {
 
 // Debugging
 void VoleMachine::get_program_counter() const {
-    std::cout << "Program Counter: " << int(program_counter) << std::endl;
+    std::cout << "Program Counter: " << std::hex << int(program_counter) << std::endl;
 }
 
 void VoleMachine::get_instruction_register() const {
-    std::cout << "Instruction Register: " << int(instruction_register) << std::endl;
+    std::cout << "Instruction Register: " << std::hex << int(instruction_register) << std::endl;
 }
 
 void VoleMachine::get_memory() const {
