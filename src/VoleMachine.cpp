@@ -109,9 +109,14 @@ void VoleMachine::decode_execute() {
 }
 
 void VoleMachine::start_machine() {
+    std::cin.ignore(200, '\n');
     while(!is_halted) {
         fetch();
+        get_current_state();
+        std::cin.get();
+        system("clear");
         decode_execute();
+        get_current_state();
     }
 }
 

@@ -18,6 +18,12 @@ public:
     static void ROTATE(VoleMachine &machine, uint8_t reg, uint8_t numBits);
     static void JUMP(VoleMachine &machine, uint8_t reg, uint8_t address);
     static void HALT(VoleMachine &machine);
+
+
+private:
+    static void parse_float(uint8_t num, int &sign, int &exp, int &mantissa);
+    static uint8_t package_float(int sign, int expt, int mantissa);
+
 };
 
 #endif // !INSTRUCTIONSET_H

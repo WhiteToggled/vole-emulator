@@ -41,16 +41,19 @@ int main(int argc, char* argv[]) {
     // 2. Make a way to go through each machine cycle by pressing -> and <-
     // 3. Make a UI in curses
 
+    string char_usr_pc;
+    int int_usr_pc;
     input_memory();
-    /* cout << "-----------------------------" << endl; */
-    /* cout << "         INITIAL             " << endl; */
-    /* cout << "-----------------------------" << endl; */
-    /* machine.get_current_state(); */
+    cin.clear();
+    cin.ignore(200,'\n');
+    cout << "Enter program counter value: ";
+    cin >> char_usr_pc;
+    stringstream pc;
+    pc << hex << char_usr_pc;
+    pc >> int_usr_pc;
+    machine.set_program_counter(static_cast<uint8_t>(int_usr_pc));
     machine.start_machine();
-    cout << "-----------------------------" << endl;
-    cout << "            FINAL            " << endl;
-    cout << "-----------------------------" << endl;
-    machine.get_current_state();
+
 
     return 0;
 
